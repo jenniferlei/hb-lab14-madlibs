@@ -56,7 +56,7 @@ def greet_person():
 def show_madlib_form():
     """Starting game or telling user goodbye depending on response"""
 
-    play_game = regquest.args.get("game option")
+    play_game = request.args.get("game option")
 
     if play_game == "Yes":
         return render_template("game.html")
