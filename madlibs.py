@@ -1,7 +1,7 @@
 
 """A madlib game that compliments its users."""
 
-from random import choice
+from random import choice, sample
 
 from flask import Flask, render_template, request
 
@@ -35,7 +35,7 @@ def start_here():
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/madlibs/static/madlibs.css">
+        <link rel="stylesheet" href="/static/madlibs.css">
         <title>Home Page</title>
     </head>
     <body>
@@ -43,7 +43,7 @@ def start_here():
     <h1>Home Page</h1>
 
     Hi! This is the home page.
-    <br>
+    <br><br>
     <a href="/hello">Click to continue</a>
 
     </body>
@@ -63,9 +63,9 @@ def greet_person():
 
     player = request.args.get("person")
 
-    compliment = choice(AWESOMENESS)
+    nice_things = sample(AWESOMENESS, 3)
 
-    return render_template("compliment.html", person=player, compliment=compliment)
+    return render_template("compliment.html", person=player, compliments=nice_things)
 
 
 @app.route("/game")
@@ -84,12 +84,13 @@ def show_madlib_form():
 def show_madlib():
     """Create madlib"""
 
+    madlib_story = choice(["madlib.html", "madlib2.html", "madlib3.html"])
     person = request.args.get("person")
     noun = request.args.get("noun")
     color = request.args.get("color")
-    adjectives = request.args.get("adjectives")
+    a_bunch_of_adjectives = request.args.getlist("adjective")
 
-    return render_template("madlib.html", person=person, noun=noun, color=color, adjective=adjectives)
+    return render_template(madlib_story, person=person, noun=noun, color=color, adjectives=a_bunch_of_adjectives)
 
 
 if __name__ == "__main__":

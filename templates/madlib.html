@@ -8,5 +8,13 @@
         There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab.
         <br>
         When {{ person }} went to pick it up, it burst into flames in a totally
-        {{ adjective }} way.
+        {% if adjectives %}
+            {% for adjective in adjectives %}
+                {%- if not loop.last %}
+                    {{ adjective }},
+                {%- else %}
+                    and {{ adjective }}
+                {% endif %}
+            {% endfor %}
+        {% endif %} way.
 {% endblock %}
