@@ -1,0 +1,13 @@
+body {
+    font-family: sans-serif;
+}
+
+textarea {
+    height: 1em;
+    width: 20em
+}
+
+select {
+    height: 1.75em;
+    width: 20em;
+}

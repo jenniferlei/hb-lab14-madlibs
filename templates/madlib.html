@@ -1,15 +1,15 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Madlib Storytime</title>
-    </head>
-    <body>
+{% extends 'base.html' %}
+
+{% block title %}Madlib Storytime{% endblock %}
+
+{% block content %}
         <h1>Madlib Storytime!</h1>
 
         There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab.
         <br>
         When {{ person }} went to pick it up, it burst into flames in a totally
-        {{ adjective }} way.
-
-    </body>
-</html>
+        {% for adjective in adjectives %}
+            {{ adjective }} 
+        {% endfor %}
+        way.
+{% endblock %}

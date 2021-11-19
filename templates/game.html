@@ -1,10 +1,9 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Madlib Options</title>
-    </head>
-    <body>
-        <h1>Madlib Options</h1></body>
+{% extends 'base.html' %}
+
+{% block title %}Madlib Options{% endblock %}
+
+{% block content %}
+        <h1>Madlib Options</h1>
 
         <form action="/madlib">
 
@@ -27,10 +26,25 @@
             <label>Noun:</label><textarea name="noun"></textarea>
             <br>
             <br>
-            <label>Adjective:</label><textarea name="adjective"></textarea>
+            <label>Adjective (select two):</label>
+            <br>
+            <input type="checkbox" name="adjectives" value="pretentious">
+            <label>pretentious</label>
+            <br>
+            <input type="checkbox" name="adjectives" value="cute">
+            <label>cute</label>
+            <br>
+            <input type="checkbox" name="adjectives" value="evil">
+            <label>evil</label>
+            <br>
+            <input type="checkbox" name="adjectives" value="hilarious">
+            <label>hilarious</label>
+            <br>
+            <input type="checkbox" name="adjectives" value="goofy">
+            <label>goofy</label>
             <br>
             <br>
 
             <button type="submit">Submit</button>
         </form>
-</html>
+{% endblock %}
