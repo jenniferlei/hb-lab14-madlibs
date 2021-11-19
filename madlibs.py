@@ -1,3 +1,4 @@
+
 """A madlib game that compliments its users."""
 
 from random import choice
@@ -49,6 +50,20 @@ def greet_person():
     compliment = choice(AWESOMENESS)
 
     return render_template("compliment.html", person=player, compliment=compliment)
+
+
+@app.route("/game")
+def show_madlib_form():
+    """Starting game or telling user goodbye depending on response"""
+
+    play_game = regquest.args.get("game option")
+
+    if play_game == "Yes":
+        return render_template("game.html")
+
+    else:
+        return render_template("goodbye.html")
+
 
 
 if __name__ == "__main__":
